@@ -1,0 +1,15 @@
+
+LIBRARY         Controls INITGLOBAL TERMGLOBAL 
+
+DESCRIPTION    'Custom Controls - 32 Bit'
+
+CODE         MOVEABLE
+DATA         MULTIPLE MOVEABLE
+
+STACKSIZE 0
+
+PROTMODE
+
+EXETYPE        OS2
+
+EXPORTS        InitControls @ 1

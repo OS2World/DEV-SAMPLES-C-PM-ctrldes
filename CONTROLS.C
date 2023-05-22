@@ -1,12 +1,7 @@
-
 /* Program name:   Controls.C  Title: Designing	Custom Controls		*/
 /* OS/2	Developer Magazine, Issue:  Spring '93, page 72                 */
-/* Author:  Mark Benge	 IBM Corp.					*/
-/*	    Matt Smith	 Prominare Inc.					*/
 /* Description:	 Custom	controls demystified.  Sample custom controls.	*/
 /*		 Can be	used as	the basis for other custom controls.	*/
-/* Program Requirements:  OS/2 2.0, IBM	C Set/2	or WATCOM C 386/9.0	*/
-/*			  OS/2 Toolkit					*/
 
 /* DISCLAIMER OF WARRANTIES:						*/
 /* -------------------------						*/
@@ -144,8 +139,8 @@ MRESULT	EXPENTRY Text3DWndProc(HWND hWnd, ULONG	msg, MPARAM mp1, MPARAM	mp2);
 
 ULONG EXPENTRY InitControls(HAB	hAB);
 
-#pragma	subtitle("   Image Button Control - DLL Initialization/Termination Procedure")
-#pragma	page( )
+// #pragma	subtitle("   Image Button Control - DLL Initialization/Termination Procedure")
+// #pragma	page( )
 
 /* --- InitControls ------------------------------------ [ Public ] ---	*/
 /*									*/
@@ -170,7 +165,7 @@ ULONG EXPENTRY InitControls(HAB	hAB)
 		       /* Presentation Manager and return registration	*/
 		       /* result					*/
 
-if ( !WinRegisterClass(hAB, "3DFrame", (PFNWP)FrameWndProc,
+if ( !WinRegisterClass(hAB, (PCSZ) "3DFrame", (PFNWP)FrameWndProc,
 		       CS_SYNCPAINT | CS_HITTEST | CS_PARENTCLIP | CS_SIZEREDRAW,
 		       USER_RESERVED) )
    return(0UL);
@@ -178,7 +173,7 @@ if ( !WinRegisterClass(hAB, "3DFrame", (PFNWP)FrameWndProc,
 		       /* Presentation Manager and return registration	*/
 		       /* result					*/
 
-if ( !WinRegisterClass(hAB, "Patterns",	(PFNWP)PatternWndProc,
+if ( !WinRegisterClass(hAB, (PCSZ) "Patterns",	(PFNWP)PatternWndProc,
 		       CS_SYNCPAINT | CS_HITTEST | CS_PARENTCLIP | CS_SIZEREDRAW,
 		       USER_RESERVED) )
    return(0UL);
@@ -186,7 +181,7 @@ if ( !WinRegisterClass(hAB, "Patterns",	(PFNWP)PatternWndProc,
 		       /* Presentation Manager and return registration	*/
 		       /* result					*/
 
-if ( !WinRegisterClass(hAB, "3DLine", (PFNWP)Line3DWndProc,
+if ( !WinRegisterClass(hAB, (PCSZ) "3DLine", (PFNWP)Line3DWndProc,
 		       CS_SYNCPAINT | CS_HITTEST | CS_PARENTCLIP | CS_SIZEREDRAW,
 		       USER_RESERVED) )
    return(0UL);
@@ -194,17 +189,17 @@ if ( !WinRegisterClass(hAB, "3DLine", (PFNWP)Line3DWndProc,
 		       /* Presentation Manager and return registration	*/
 		       /* result					*/
 
-if ( !WinRegisterClass(hAB, "3DText", (PFNWP)Text3DWndProc,
+if ( !WinRegisterClass(hAB, (PCSZ) "3DText", (PFNWP)Text3DWndProc,
 		       CS_SYNCPAINT | CS_HITTEST | CS_PARENTCLIP | CS_SIZEREDRAW,
-		       USER_RESERVED) )	
+		       USER_RESERVED) )
    return(0UL);
 		       /* Retrun successful registration value		*/
 return(1UL);
 }
-#pragma	subtitle("   Custom Controls - Window Size Calculation Procedure")
-#pragma	page ( )
+// #pragma	subtitle("   Custom Controls - Window Size Calculation Procedure")
+// #pragma	page ( )
 
-/* --- CalcFrameSize ----------------------------------	[ Private ] ---	*/
+/* --- CalcFrameSize ----------------------------------	[ Private ] -//--	*/
 /*									*/
 /*     This function is	used to	calculate the sizes and	positions	*/
 /*     of the various elements that are	used to	make up	a shadowed	*/
@@ -247,8 +242,8 @@ psframe->aptlShadow[0].y = prcl->yBottom + 1L;
 psframe->aptlShadow[1].x = prcl->xRight	- 2L;
 psframe->aptlShadow[1].y = prcl->yTop -	1L;
 }
-#pragma	subtitle("   Custom Controls - Control Window Procedure")
-#pragma	page ( )
+// #pragma	subtitle("   Custom Controls - Control Window Procedure")
+// #pragma	page ( )
 
 /* --- CalcLineSize -----------------------------------	[ Private ] ---	*/
 /*									*/
@@ -294,8 +289,8 @@ else
    plf->aptl[2].y = plf->aptl[3].y = plf->aptl[0].y - 1L;
    }
 }
-#pragma	subtitle("   Custom Controls - Control Window Sizing Procedure")
-#pragma	page ( )
+// #pragma	subtitle("   Custom Controls - Control Window Sizing Procedure")
+// #pragma	page ( )
 
 /* --- CalcTextSize -----------------------------------	[ Private ] ---	*/
 /*									*/
@@ -345,8 +340,8 @@ WinSetWindowPos(ptf->hwndText, HWND_BOTTOM,
 		(prcl->yTop - prcl->yBottom - 2L),
 		SWP_MOVE | SWP_SIZE | SWP_SHOW);
 }
-#pragma	subtitle("   Custom Controls - Control Window Procedure")
-#pragma	page( )
+// #pragma	subtitle("   Custom Controls - Control Window Procedure")
+// #pragma	page( )
 
 /* --- lGetPresParam ----------------------------------	[ Private } ---	*/
 /*									*/
@@ -394,8 +389,8 @@ else
 	   return(lClr);
 	   }
 }
-#pragma	subtitle("   Custom Controls - Default Colours Procedure")
-#pragma	page( )
+// #pragma	subtitle("   Custom Controls - Default Colours Procedure")
+// #pragma	page( )
 
 /* --- SetDefaultTextColours --------------------------	[ Private ] ---	*/
 /*									*/
@@ -453,8 +448,8 @@ ptf->aClr[6] = lGetPresParam(hWnd, PP_BORDERCOLOR,
 			     PP_BORDERCOLORINDEX,
 			     SYSCLR_BUTTONDARK);
 }
-#pragma	subtitle("   Custom Controls - Control Window Procedure")
-#pragma	page ( )
+// #pragma	subtitle("   Custom Controls - Control Window Procedure")
+// #pragma	page ( )
 
 /* --- FrameWndProc ---------------------------------------------------	*/
 /*									*/
@@ -683,8 +678,8 @@ switch ( msg )
 
 return(0L);
 }
-#pragma	subtitle("   Custom Controls - Control Window Procedure")
-#pragma	page ( )
+// #pragma	subtitle("   Custom Controls - Control Window Procedure")
+// #pragma	page ( )
 
 /* --- Line3DWndProc --------------------------------------------------	*/
 /*									*/
@@ -694,10 +689,8 @@ return(0L);
 /*									*/
 /*     The styles supported for	the control are:			*/
 /*									*/
-/*     LNS_HORZ
-/*									*/
+/*     LNS_HORZ						*/
 /*     Upon Entry:							*/
-/*									*/
 /*     HWND   hWnd; = Window Handle					*/
 /*     ULONG  msg;  = PM Message					*/
 /*     MPARAM mp1;  = Message Parameter	1				*/
@@ -921,8 +914,8 @@ switch ( msg )
 
 return(0L);
 }
-#pragma	subtitle("   Custom Controls - Control Window Procedure")
-#pragma	page( )
+// #pragma	subtitle("   Custom Controls - Control Window Procedure")
+// #pragma	page( )
 
 /* --- PatternWndProc -------------------------------------------------	*/
 /*									*/
@@ -1134,8 +1127,8 @@ switch ( msg )
    }
 return(0L);
 }
-#pragma	subtitle("   Custom Controls - 3D Text Window Procedure")
-#pragma	page ( )
+// #pragma	subtitle("   Custom Controls - 3D Text Window Procedure")
+// #pragma	page ( )
 
 /* --- Text3DWndProc ----------------------------------	[ Private ] ---	*/
 /*									*/

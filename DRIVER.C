@@ -1,13 +1,8 @@
-
 /* Program name:   Controls.C  Title: Designing Custom Controls         */
 /* OS/2 Developer Magazine, Issue:  Spring '93, page 72                 */
-/* Author:  Mark Benge   IBM Corp.                                      */
-/*          Matt Smith   Prominare Inc.                                 */
 /* Description:  Custom controls demystified.  Sample image button      */
 /*               with text.  Can be used as the basis for other         */
 /*               custom controls.                                       */
-/* Program Requirements:  OS/2 2.0, IBM C Set/2 or WATCOM C 386/9.0     */
-/*                        OS/2 Toolkit                                  */
 
 /* DISCLAIMER OF WARRANTIES:                                            */
 /* -------------------------                                            */
@@ -56,8 +51,8 @@
 /*             INT main(INT argc, CHAR *argv[ ]);                       */
 
 
-/* Copyright ¸ International Business Machines Corp., 1991,1992,1993.   */
-/* Copyright ¸ 1989-1993  Prominare Inc.  All Rights Reserved.          */
+/* Copyright Â¸ International Business Machines Corp., 1991,1992,1993.   */
+/* Copyright Â¸ 1989-1993  Prominare Inc.  All Rights Reserved.          */
 
 /* -------------------------------------------------------------------- */
 
@@ -66,8 +61,8 @@ MRESULT EXPENTRY DriverWndProc(HWND hWnd, ULONG msg, MPARAM mp1, MPARAM mp2);
 
 extern ULONG EXPENTRY InitControls(HAB hAB);
 
-#pragma subtitle("   Test Driver Window - Client Window Procedure")
-#pragma page( )
+// #pragma subtitle("   Test Driver Window - Client Window Procedure")
+// #pragma page( )
 
 /* --- DriverWndProc ---------------------------------- [ Private ] --- */
 /*                                                                      */
@@ -101,16 +96,16 @@ switch ( msg )
        lClr = SYSCLR_DIALOGBACKGROUND;
        WinSetPresParam(hWnd, PP_BACKGROUNDCOLORINDEX, 4UL, &lClr);
 
-       WinCreateWindow(hWnd, "3DFrame", "", WS_VISIBLE, 10L, 10L, 100L, 100L,
+       WinCreateWindow(hWnd, (PCSZ) "3DFrame", (PCSZ) "", WS_VISIBLE, 10L, 10L, 100L, 100L,
                        hWnd, HWND_TOP, 1024, (PVOID)NULL, (PVOID)NULL);
 
-       WinCreateWindow(hWnd, "Patterns", "", WS_VISIBLE | PATSYM_DIAG4, 150L, 10L, 100L, 100L,
+       WinCreateWindow(hWnd, (PCSZ) "Patterns", (PCSZ) "", WS_VISIBLE | PATSYM_DIAG4, 150L, 10L, 100L, 100L,
                        hWnd, HWND_TOP, 1025, (PVOID)NULL, (PVOID)NULL);
 
-       WinCreateWindow(hWnd, "3DLine", "", WS_VISIBLE | LNS_HORIZONTAL, 10L, 200L, 100L, 10L,
+       WinCreateWindow(hWnd, (PCSZ) "3DLine", (PCSZ) "", WS_VISIBLE | LNS_HORIZONTAL, 10L, 200L, 100L, 10L,
                        hWnd, HWND_TOP, 1026, (PVOID)NULL, (PVOID)NULL);
 
-       WinCreateWindow(hWnd, "3DText", "3D Text", WS_VISIBLE | DS_RAISED | DT_CENTER | DT_VCENTER,
+       WinCreateWindow(hWnd, (PCSZ) "3DText", (PCSZ) "3D Text", WS_VISIBLE | DS_RAISED | DT_CENTER | DT_VCENTER,
                        10L, 125L, 100L, 30L,
                        hWnd, HWND_TOP, 1027, (PVOID)NULL, (PVOID)NULL);
        break;
@@ -137,8 +132,8 @@ switch ( msg )
    }
 return(0L);
 }
-#pragma subtitle("   Program Controller")
-#pragma page( )
+// #pragma subtitle("   Program Controller")
+// #pragma page( )
 
 /* --- Main Program Controller ---------------------------------------- */
 
@@ -159,7 +154,7 @@ WinSetCp(hmqDriver = WinCreateMsgQueue(hAB = WinInitialize(0), 0), 850);
 
                        /* Register the main program window class        */
 
-if ( !WinRegisterClass(hAB, "Driver", (PFNWP)DriverWndProc,
+if ( !WinRegisterClass(hAB, (PCSZ) "Driver", (PFNWP)DriverWndProc,
                        CS_SYNCPAINT | CS_SIZEREDRAW, 0) )
    return(1);
                        /* Initialize the custom controls                */
@@ -170,7 +165,7 @@ InitControls(hAB);
 flCreateFlags = FCF_TITLEBAR | FCF_NOBYTEALIGN | FCF_SYSMENU | FCF_SIZEBORDER |
                 FCF_SHELLPOSITION | FCF_TASKLIST;
 if ( !(hwndDriverFrame = WinCreateStdWindow(HWND_DESKTOP, WS_VISIBLE,
-                                            &flCreateFlags, "Driver", "Control Driver", 0L,
+                                            &flCreateFlags, (PCSZ) "Driver", (PCSZ) "Control Driver", 0L,
                                             (HMODULE)0L, 0L, &hwndDriver)) )
    return(1);
                        /* Retrieve and then dispatch messages           */
@@ -188,4 +183,3 @@ WinTerminate(hAB);
 
 return(0);
 }
-

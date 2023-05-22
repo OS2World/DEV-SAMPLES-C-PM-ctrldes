@@ -1,0 +1,65 @@
+Name: 		CRTLDES
+Descripcion: 	PM based custom control sample.
+Date: 		2023-05-22
+Version:	1.01
+----------------------------  
+
+
+DESCRIPTION
+-----------
+This sample demonstrates how to create a PM based custom control. It was written in conjunction with an article in the Spring '93 edition of
+the OS/2 Developer, "Designing Custom Controls".  All of the files required to run and/or build the demo are included.  
+https://archive.org/details/os2devmag/OS2DevMag-V5N2/page/n73
+
+REQUIREMENTS
+------------
+- yum install git gcc make libc-devel binutils watcom-wrc watcom-wlink-hll
+
+COMPILE INSTRUCTIONS
+--------------------
+This version of this sample was modified to compile on ArcaOS with GCC 9 compiler. 
+
+1) Remember to have correct header files your path. For GCC the correct ones are the included on the "libc-devel", not the ones from the OS/2 Toolkit. Check your config.sys for "SET INCLUDE=C:\usr\include"
+
+2) Since I'm using the Watcom Resource Compiler (open source) instead of the classic rc.exe, and the the Watcom Linker, intead of the classic ilink.exe, add to your config.sys...
+ SET EMXOMFLD_LINKER=wl.exe
+ SET EMXOMFLD_TYPE=WLINK
+ SET EMXOMFLD_RC_TYPE=WRC
+ SET EMXOMFLD_RC=wrc.exe
+
+3) Run "make" or "make 2>&1 |tee make.out" to get the log file. I also provided COMPILE.CMD to run this command.
+
+TOOLS USED
+----------
+- ArcaOS	- Verion 5.0.7
+- wrc 		- Version 2.0beta1
+- gcc		- gcc (GCC) 9.2.0 20190812 (OS/2 RPM build 9.2.0-5.oc00)
+- make 		- Version 3.81 k2 (2017-11-10)
+
+TROUBLESHOOT
+------------
+The compile produce will run by just executing make on the directory, but a compile.cmd file is includes to store the log in a file. If you want to save the log file you can run it as "nmake 2>&1 |tee make.out". The log will be saved into the "make.out" file.
+
+HISTORY
+---------- 
+- 1.01 - 2023-04-27
+Changed version to compile on gcc and to run on ArcaOS 5.0.7.
+
+- 1.0
+Original version by Matt Smith and Mark Benge.
+
+LICENSE
+-------
+The 3-Clause BSD License.
+
+DISCLAIMER OF WARRANTIES:
+-------------------------
+The following [enclosed] code is sample code created by IBM Corporation and Prominare Inc.  This	sample code is not part of any	standard IBM product and is provided to you solely for the purpose of assisting	you in the development of your applications.  The code	is provided "AS IS",	without	warranty of any	kind.  Neither IBM nor Prominare shall be liable for any damages arising out of your use of the sample code, even	if they	have been advised of the possibility of such damages.	
+
+AUTHORS
+-------
+- Martin Iturbide (2023)
+- Dave Yeo (2023)
+- Matt Smith - Prominare, Inc.
+- Mark Benge - IBM Corporation
+

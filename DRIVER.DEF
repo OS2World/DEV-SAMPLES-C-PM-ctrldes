@@ -1,11 +1,11 @@
+;-------------------------------------
+; DRIVER.DEF module definition file
+;-------------------------------------
 
 NAME            Driver WINDOWAPI NEWFILES
+
+DESCRIPTION     '@#OS2World:1.01#@##1## 22 May 2023 20:00:00     ARCAOS-507::::::v1.01@@Sample Program to call Controls'
 
 CODE	        MOVEABLE
 DATA	        MULTIPLE MOVEABLE
 
-STACKSIZE	16384
-
-PROTMODE
-
-EXETYPE		OS2

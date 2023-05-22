@@ -1,15 +1,12 @@
+;-------------------------------------
+; CONTROLS.DEF module definition file
+;-------------------------------------
 
-LIBRARY         Controls INITGLOBAL TERMGLOBAL 
+LIBRARY         Controls INITGLOBAL TERMGLOBAL
 
-DESCRIPTION    'Custom Controls - 32 Bit'
+DESCRIPTION    '@#OS2World:1.01#@##1## 27 Apr 2023 20:37:00     ARCAOS-507::::::v1.01@@Custom Controls - 32 Bit'
 
 CODE         MOVEABLE
 DATA         MULTIPLE MOVEABLE
-
-STACKSIZE 0
-
-PROTMODE
-
-EXETYPE        OS2
 
 EXPORTS        InitControls @ 1

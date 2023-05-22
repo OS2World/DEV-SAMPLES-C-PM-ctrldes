@@ -3,7 +3,7 @@ Custom controls demystified. Sample custom controls. Can be used as the basis fo
 
 LICENSE
 ===============
-* AS IS - BSD alike
+* BSD 3-Clause License
 
 COMPILE TOOLS
 ===============

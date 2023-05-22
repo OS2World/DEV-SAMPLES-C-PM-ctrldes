@@ -6,7 +6,7 @@
 #  Make: make
 all : driver.exe
 
-driver.exe : driver.exe driver.obj controls.lib driver.def
+driver.exe : driver.obj controls.lib driver.def
 	gcc -Zomf -Zmap -lcontrols driver.obj driver.def -o driver.exe
 	
 driver.obj : driver.c
